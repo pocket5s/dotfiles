@@ -8,8 +8,12 @@ Bundle 'tpope/vim-git'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'ack.vim'
+Bundle "myusuf3/numbers.vim"
+
 filetype on
 syntax on
 let mapleader=","
@@ -26,6 +30,13 @@ nmap <leader>h :bprevious<CR>
 nmap <leader>bl :ls<CR>
 " Close buffer and move to previous one
 nmap <leader>d :bprevious<CR>:bdelete #<CR>
+" NERDTree toggle
+nmap <leader>nt :NERDTreeToggle<CR>
+" Numbers Toggle
+nnoremap <F3> :NumbersToggle<CR>
+nnoremap <F4> :NumbersOnOff<CR>
+"Paste toggle
+set pastetoggle=<F2>
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
@@ -59,11 +70,11 @@ highlight GitGutterChangeDelete ctermfg=yellow guifg=darkyellow
 let g:airline_powerline_fonts=1
 let g:airline_section_x=""
 let g:airline_section_y="%{strlen(&ft)?&ft:'none'}"
-let g:airline_theme='luna'
+let g:airline_theme='wombat'
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Splits
 nnoremap <C-J> <C-W><C-J>
@@ -73,7 +84,7 @@ nnoremap <C-H> <C-W><C-H>
 
 set laststatus=2
 set number
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*/node_modules/*
 set autoindent
 set expandtab
 set softtabstop=2
