@@ -12,15 +12,14 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'ack.vim'
-Bundle "myusuf3/numbers.vim"
+"Bundle "myusuf3/numbers.vim"
 
 filetype on
 syntax on
 let mapleader=","
 
-" Ack
-noremap <leader>s :Ack
-map <F4> :execute "Ack -w --type=" . &filetype . " " . expand("<cword>")<Bar> cw<CR>
+" Ag (search)
+noremap <leader>s :Ag
 
 " Move to the next buffer
 nmap <leader>l :bnext<CR>
@@ -33,8 +32,9 @@ nmap <leader>d :bprevious<CR>:bdelete #<CR>
 " NERDTree toggle
 nmap <leader>nt :NERDTreeToggle<CR>
 " Numbers Toggle
-nnoremap <F3> :NumbersToggle<CR>
-nnoremap <F4> :NumbersOnOff<CR>
+"nmap <C-N><C-N> :set invnumber<CR>
+nnoremap <F3> :set invnumber<CR>
+nnoremap <F4> :call NumberToggle()<CR>
 "Paste toggle
 set pastetoggle=<F2>
 
@@ -89,5 +89,13 @@ set autoindent
 set expandtab
 set softtabstop=2
 set shiftwidth=2
+"set mouse=a
 "hi clear SignColumn
 
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
