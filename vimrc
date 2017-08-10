@@ -9,10 +9,13 @@ Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'rking/ag.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'ack.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'tpope/vim-rhubarb'
+Bundle 'burnettk/vim-angular'
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'scrooloose/nerdtree'
 "Bundle "myusuf3/numbers.vim"
 
 filetype on
@@ -44,7 +47,7 @@ set pastetoggle=<F2>
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:CommandTMaxFiles=10000
+let g:CommandTMaxFiles=20000
 let g:CommandTMaxHeight=100
 let g:CommandTMinHeight=6
 let g:CommandTMatchWindowReverse=1
@@ -55,6 +58,7 @@ nmap <leader>t :CtrlP<cr>
 " Use letter 'f' for toggle folding
 "
 nnoremap f za
+nnoremap F zA
 set foldmethod=indent
 set foldlevel=4
 
@@ -87,10 +91,20 @@ nnoremap <C-H> <C-W><C-H>
 
 set laststatus=2
 set number
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*/node_modules/*,*/build/*,*/webroot/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*/node_modules/*,*/build/*,*/webroot/*,*.html
 set autoindent
 set expandtab
+set tabstop=4
 set softtabstop=2
 set shiftwidth=2
+set hlsearch
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+let g:NERDTreeWinSize = 40
+
+set tags=./.git/tags:~/workspace
 "set mouse=a
 "hi clear SignColumn
