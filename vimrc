@@ -15,7 +15,9 @@ Plugin 'tpope/vim-rhubarb'
 Bundle 'burnettk/vim-angular'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'leafgarland/typescript-vim'
-Bundle 'scrooloose/nerdtree'
+"Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 "Bundle "myusuf3/numbers.vim"
 
 filetype on
@@ -65,7 +67,8 @@ set foldlevel=4
 "
 " GIT Gutter
 "
-let g:gitgutter_sign_column_always=1
+"let g:gitgutter_sign_column_always=1
+set signcolumn=yes
 let g:gitgutter_realtime=1
 highlight clear SignColumn
 highlight GitGutterAdd ctermfg=green guifg=darkgreen
