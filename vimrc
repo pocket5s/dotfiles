@@ -1,5 +1,18 @@
 set nocompatible
+set backspace=indent,eol,start
 filetype off
+call plug#begin('~/.vim/plugged')
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'mileszs/ack.vim'
+"endif
+call plug#end()
+
 set runtimepath+=~/.vim/bundle/vundle
 call vundle#rc()
 
@@ -9,15 +22,20 @@ Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'rking/ag.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'ack.vim'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'tpope/vim-rhubarb'
+"Plugin 'w0rp/ale'
+Bundle 'burnettk/vim-angular'
+Bundle 'othree/javascript-libraries-syntax.vim'
+"Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 "Bundle "myusuf3/numbers.vim"
 
 filetype on
 syntax on
 colorscheme wombat256mod
+let g:deoplete#enable_at_startup = 1
 let mapleader=","
 
 " Ag (search)
@@ -44,7 +62,7 @@ set pastetoggle=<F2>
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:CommandTMaxFiles=10000
+let g:CommandTMaxFiles=20000
 let g:CommandTMaxHeight=100
 let g:CommandTMinHeight=6
 let g:CommandTMatchWindowReverse=1
@@ -55,13 +73,15 @@ nmap <leader>t :CtrlP<cr>
 " Use letter 'f' for toggle folding
 "
 nnoremap f za
+nnoremap F zA
 set foldmethod=indent
 set foldlevel=4
 
 "
 " GIT Gutter
 "
-let g:gitgutter_sign_column_always=1
+"let g:gitgutter_sign_column_always=1
+set signcolumn=yes
 let g:gitgutter_realtime=1
 highlight clear SignColumn
 highlight GitGutterAdd ctermfg=green guifg=darkgreen
@@ -87,10 +107,24 @@ nnoremap <C-H> <C-W><C-H>
 
 set laststatus=2
 set number
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*/node_modules/*,*/build/*,*/webroot/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*/node_modules/*,*/build/*,*/webroot/*,*.html
 set autoindent
 set expandtab
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set hlsearch
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
+let g:NERDTreeWinSize = 40
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+set tags=./.git/tags:~/workspace
 "set mouse=a
 "hi clear SignColumn
+"NeoBundle 'numkil/ag.nvim'
