@@ -10,26 +10,29 @@ call plug#begin('~/.vim/plugged')
   Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'leafgarland/typescript-vim'
   Plug 'mileszs/ack.vim'
+  Plug 'bling/vim-airline'
+  Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'mustache/vim-mustache-handlebars'
+  Plug 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'tpope/vim-rhubarb'
+  Plug 'scrooloose/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'Valloric/YouCompleteMe'
+  Plug 'SirVer/ultisnips'
+  Plug 'dart-lang/dart-vim-plugin'
+  Plug 'ctrlpvim/ctrlp.vim'
 "endif
 call plug#end()
 
 set runtimepath+=~/.vim/bundle/vundle
-call vundle#rc()
+"call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-git'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'tpope/vim-rhubarb'
+"Bundle 'gmarik/vundle'
+"Bundle 'tpope/vim-git'
 "Plugin 'w0rp/ale'
-Bundle 'burnettk/vim-angular'
-Bundle 'othree/javascript-libraries-syntax.vim'
-"Bundle 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Bundle 'burnettk/vim-angular'
+"Bundle 'othree/javascript-libraries-syntax.vim'
 "Bundle "myusuf3/numbers.vim"
 
 filetype on
@@ -37,6 +40,8 @@ syntax on
 colorscheme wombat256mod
 let g:deoplete#enable_at_startup = 1
 let mapleader=","
+
+set rtp+=/usr/local/opt/fzf
 
 " Ag (search)
 noremap <leader>s :Ag
@@ -123,8 +128,10 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 let g:NERDTreeWinSize = 40
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-
+let g:ycm_auto_trigger = 0
 set tags=./.git/tags:~/workspace
 "set mouse=a
 "hi clear SignColumn
 "NeoBundle 'numkil/ag.nvim'
+
+let $PATH='$HOME/.cargo/bin:/usr/bin:/usr/local/bin:/bin:/usr/sbin:/sbin'
